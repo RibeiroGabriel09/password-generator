@@ -6,3 +6,9 @@ function gerarSenha(tamanho) {
   }
   return senha
 }
+
+function mostrarSenha() {
+  const tamanho = document.getElementById("tamanho").value
+  const senha = gerarSenha(tamanho)
+  document.getElementById("senha").textContent = senha
+}
