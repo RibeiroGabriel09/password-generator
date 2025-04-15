@@ -7,24 +7,31 @@ function gerarSenha(tamanho) {
   return senha
 }
 
-let senhaGerada = ""
+let senhaAtual = ""
 
 function mostrarSenha() {
   const tamanho = document.getElementById("tamanho").value
-  senhaGerada = gerarSenha(tamanho)
-  document.getElementById("senha").textContent = senhaGerada
+  if (!tamanho || tamanho <= 0) {
+    document.getElementById("senha").textContent = "Digite um tamanho válido"
+    return
+  }
+  senhaAtual = gerarSenha(tamanho)
+  document.getElementById("senha").textContent = senhaAtual
 }
 
 function baixarSenha() {
-  if (!senhaGerada) return
+  if (!senhaAtual) {
+    alert("Gere uma senha primeiro!")
+    return
+  }
 
-  const blob = new Blob([senhaGerada], { type: "text/plain" })
+  const blob = new Blob([senhaAtual], { type: "text/plain" })
   const url = URL.createObjectURL(blob)
   const a = document.createElement("a")
-
   a.href = url
   a.download = "senha.txt"
+  document.body.appendChild(a)
   a.click()
-
+  document.body.removeChild(a)
   URL.revokeObjectURL(url)
 }
