@@ -26,30 +26,6 @@ function gerarSenhaForte(tamanho = 12) {
   return senha
 }
 
-
-function gerarSenhaForte(tamanho = 12) {
-  const letrasMin = 'abcdefghijklmnopqrstuvwxyz'
-  const letrasMai = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-  const numeros = '0123456789'
-  const especiais = '!@#$%^&*()_+'
-
-  const todos = letrasMin + letrasMai + numeros + especiais
-
-  let senha = ''
-  senha += letrasMin.charAt(Math.floor(Math.random() * letrasMin.length))
-  senha += letrasMai.charAt(Math.floor(Math.random() * letrasMai.length))
-  senha += numeros.charAt(Math.floor(Math.random() * numeros.length))
-  senha += especiais.charAt(Math.floor(Math.random() * especiais.length))
-
-  while (senha.length < tamanho) {
-    senha += todos.charAt(Math.floor(Math.random() * todos.length))
-  }
-
-  senha = senha.split('').sort(() => Math.random() - 0.5).join('')
-  return senha
-}
-
-
 function verificarForca(senha) {
   const fracas = ['12345', 'qwerty', 'password', 'senha', 'abc123', 'admin']
   const avisos = []
