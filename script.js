@@ -4,14 +4,28 @@ const gerarBtn = document.getElementById('gerar')
 const baixarBtn = document.getElementById('baixar')
 const verificarBtn = document.getElementById('verificar')
 
-function gerarSenha(tamanho = 12) {
-  const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+'
+function gerarSenhaForte(tamanho = 12) {
+  const letrasMin = 'abcdefghijklmnopqrstuvwxyz'
+  const letrasMai = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  const numeros = '0123456789'
+  const especiais = '!@#$%^&*()_+'
+
+  const todos = letrasMin + letrasMai + numeros + especiais
+
   let senha = ''
-  for (let i = 0; i < tamanho; i++) {
-    senha += chars.charAt(Math.floor(Math.random() * chars.length))
+  senha += letrasMin.charAt(Math.floor(Math.random() * letrasMin.length))
+  senha += letrasMai.charAt(Math.floor(Math.random() * letrasMai.length))
+  senha += numeros.charAt(Math.floor(Math.random() * numeros.length))
+  senha += especiais.charAt(Math.floor(Math.random() * especiais.length))
+
+  while (senha.length < tamanho) {
+    senha += todos.charAt(Math.floor(Math.random() * todos.length))
   }
+
+  senha = senha.split('').sort(() => Math.random() - 0.5).join('')
   return senha
 }
+
 
 function gerarSenhaForte(tamanho = 12) {
   const letrasMin = 'abcdefghijklmnopqrstuvwxyz'
@@ -58,7 +72,7 @@ function verificarForca(senha) {
 }
 
 gerarBtn.addEventListener('click', () => {
-  const senha = gerarSenha()
+  const senha = gerarSenhaForte()
   senhaInput.value = senha
   resultado.textContent = 'Senha gerada! Agora testa ela aí ou baixa o .txt.'
 })
