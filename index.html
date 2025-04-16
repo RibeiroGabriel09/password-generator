@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Gerador de Senhas</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <div class="container">
-      <h1>🔐 Gerador de Senhas</h1>
-      <input type="number" id="tamanho" placeholder="Tamanho da senha" />
-      <button onclick="mostrarSenha()">Gerar Senha</button>
-      <p id="senha"></p>
-      <button onclick="baixarSenha()">Baixar .txt</button>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gerador de Senhas</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🔐 Gerador & Verificador de Senhas</h1>
+    <input type="text" id="senha" placeholder="Sua senha aparece aqui ou digite uma..." />
+    <div class="botoes">
+      <button id="gerar">Gerar Senha</button>
+      <button id="baixar">Baixar .txt</button>
+      <button id="verificar">Verificar Força</button>
     </div>
-    <script src="script.js"></script>
-  </body>
+    <p id="resultado"></p>
+  </div>
+  <script src="script.js"></script>
+</body>
 </html>
